@@ -46,4 +46,37 @@ public class MatriculaDAO {
         }
         return lista;
     }
+
+    public List<Matricula> listarPorAlumnoYEstado(int idAlumno, String estado) throws Exception {
+        List<Matricula> lista = new ArrayList<>();
+        String sql = "SELECT * FROM matricula WHERE idAlumno = ? AND estado = ?";
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, idAlumno);
+            ps.setString(2, estado);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    lista.add(new Matricula(
+                            rs.getInt("idMatricula"),
+                            rs.getInt("idAlumno"),
+                            rs.getInt("idPeriodo"),
+                            rs.getDate("fechaMatricula"),
+                            rs.getString("estado")
+                    ));
+                }
+            }
+        }
+        return lista;
+    }
+
+    public void actualizarEstado(int idMatricula, String nuevoEstado) throws Exception {
+        String sql = "UPDATE Matricula SET estado = ? WHERE idMatricula = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, nuevoEstado);
+            ps.setInt(2, idMatricula);
+            ps.executeUpdate();
+        }
+    }
 }

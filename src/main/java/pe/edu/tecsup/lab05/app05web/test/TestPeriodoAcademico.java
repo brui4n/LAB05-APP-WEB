@@ -12,7 +12,7 @@ public class TestPeriodoAcademico {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
         try {
-            // Crear algunos periodos de prueba
+
             PeriodoAcademico p1 = new PeriodoAcademico(0, "2025-I", sdf.parse("2025-03-01"), sdf.parse("2025-07-31"), "activo");
             PeriodoAcademico p2 = new PeriodoAcademico(0, "2025-II", sdf.parse("2025-08-01"), sdf.parse("2025-12-31"), "cerrado");
 

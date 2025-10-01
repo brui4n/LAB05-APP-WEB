@@ -46,4 +46,36 @@ public class PeriodoAcademicoDAO {
         }
         return lista;
     }
+
+    // Obtener periodo por ID
+    public PeriodoAcademico obtenerPorId(int idPeriodo) throws Exception {
+        String sql = "SELECT * FROM PeriodoAcademico WHERE idPeriodo = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, idPeriodo);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return new PeriodoAcademico(
+                            rs.getInt("idPeriodo"),
+                            rs.getString("nombrePeriodo"),
+                            rs.getDate("fechaInicio"),
+                            rs.getDate("fechaFin"),
+                            rs.getString("estado")
+                    );
+                }
+            }
+        }
+        return null;
+    }
+
+    public void actualizarEstado(int idPeriodo, String nuevoEstado) throws Exception {
+        String sql = "UPDATE PeriodoAcademico SET estado = ? WHERE idPeriodo = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, nuevoEstado);
+            ps.setInt(2, idPeriodo);
+            ps.executeUpdate();
+        }
+    }
 }

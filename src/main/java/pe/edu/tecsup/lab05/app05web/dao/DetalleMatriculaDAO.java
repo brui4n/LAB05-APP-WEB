@@ -44,4 +44,28 @@ public class DetalleMatriculaDAO {
         }
         return lista;
     }
+
+    // Actualizar estado de un detalle existente
+    public void actualizarEstado(int idDetalle, String nuevoEstado) throws Exception {
+        String sql = "UPDATE DetalleMatricula SET estado = ? WHERE idDetalle = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, nuevoEstado);
+            ps.setInt(2, idDetalle);
+            ps.executeUpdate();
+        }
+    }
+
+    public void actualizarEstadoPorMatricula(int idMatricula, String nuevoEstado) throws Exception {
+        String sql = "UPDATE DetalleMatricula SET estado = ? WHERE idMatricula = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, nuevoEstado);
+            ps.setInt(2, idMatricula);
+            ps.executeUpdate();
+        }
+    }
+
 }

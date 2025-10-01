@@ -7,9 +7,9 @@ public class TestCurso {
     public static void main(String[] args) {
         CursoDAO dao = new CursoDAO();
         try {
-            dao.insertar(new Curso(0, "Matemáticas", 4));
-            dao.insertar(new Curso(0, "Programación Java", 3));
-            dao.insertar(new Curso(0, "Física", 3));
+            dao.insertar(new Curso(0, "Expresion Oral", 3));
+            dao.insertar(new Curso(0, "Aplicaciones web", 5));
+            dao.insertar(new Curso(0, "Programaciones Moviles", 5));
             System.out.println("Cursos insertados correctamente!");
         } catch (Exception e) {
             e.printStackTrace();

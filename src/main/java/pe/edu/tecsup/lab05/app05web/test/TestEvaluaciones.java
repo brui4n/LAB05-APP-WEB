@@ -7,7 +7,7 @@ public class TestEvaluaciones {
     public static void main(String[] args) throws Exception {
         EvaluacionDAO dao = new EvaluacionDAO();
 
-        // Suponiendo que tus cursos tienen IDs 1, 2, 3...
+
         int[] cursos = {1, 2, 3};
         String[] tipos = {"Examen", "Práctica", "Proyecto"};
         double[] pesos = {40, 30, 30}; // ejemplo de ponderación
