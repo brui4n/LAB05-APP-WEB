@@ -14,6 +14,9 @@ Este sistema implementa el **módulo de Matrícula** del proceso académico.
 3. Configura la conexión en el archivo:
    src/main/resources/db.properties
 
+## Datos de prueba
+1. En caso quisiera probar datos de prueba directamente se le ah dejado en el archivo [`test/DataTest`](./src/main/java/pe/edu/tecsup/lab05/app05web/test/DataTest.java) para que pueda cargar datos directamente al ejecutar el test
+
 ## 📌 Rutas principales del Módulo de Matrícula 
 
 1. Alumnos:http://localhost:8080/App05-web/alumnos
